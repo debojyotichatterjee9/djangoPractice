@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>This is Contact View for {{request.user}}</h1>
+<h5>Is LoggedIn: {{request.user.is_authenticated}}</h5>
+<p>{% lorem 4 b random %}</p>
+    {% endblock %}

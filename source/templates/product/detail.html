@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Product Details</h1>
+<h2 style="color: #3333ff">
+  {{ object.title }}
+</h2>
+<h5 style="color: #ff3333">
+  Price: ${{ object.price }}
+</h5>
+
+<ul>
+  <li>Product Summary: {% if object.summary != None and object.summary != '' %}{{ object.summary }}{% else %}Summary coming soon...{% endif %}</li>
+  <li>Product Description: {% if object.description != None and object.description != '' %}{{ object.description }}{% else %}Description coming soon...{% endif %}</li>
+</ul>
+<p>
+  Is this product featured?: {{ object.featured }}
+</p>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<form action="." method='POST'>{% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Save">
+</form>
+
+<p style="color: blue">This is just an example of creating a Pure Django Form</p>
+<p style="color: red">
+  Over here all the fields are set to required beacause the form is initialized with <br>
+   the method "request.POST", i.e the form cannot be submited.
+  <br>
+  Now if you delete the required property from the inspect element in dev tools <br>
+  and try to submit the form, then the Django validation comes into play and it does <br>
+  not allow you to submit the form and generates required field error on the page.
+</p>
+
+
+{% endblock %}

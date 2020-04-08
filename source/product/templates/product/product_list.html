@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Product List(Template rendering from within the product app folder)</h3>
+
+<!-- {{ object_list }} -->
+
+{% for product in object_list %}
+  <p>{{ product.id }} - <a href="../product/{{ product.id }}">{{ product.title }}</a> - ${{ product.price }} (Featured: {{ product.featured }})</p>
+  <!-- <p>{{ product.id }} - <a href="{{ product.get_absolute_url }}">{{ product.title }}</a> - ${{ product.price }} (Featured: {{ product.featured }})</p> -->
+{% endfor %}
+
+{% endblock %}

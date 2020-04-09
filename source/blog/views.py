@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 from django.views.generic import (
     CreateView,
     DetailView,
@@ -36,7 +37,7 @@ class ArticleCreateView(CreateView):
     def form_valid(self, form):
         print(form.cleaned_data)
         return super().form_valid(form)
-    # we can change the url where we want to redirect after the article is saved by a function as mentioned below
+    # we can change the url where we want to redirect after the article is saved by a function as mentioned below (done in the delete article part)
     # def get_success_url(self):
     #     return '/blog'
 
@@ -54,3 +55,16 @@ class ArticleUpdateView(UpdateView):
     def form_valid(self, form):
         print(form.cleaned_data)
         return super().form_valid(form)
+
+
+
+# ========================== DELETE VIEW ========================== #
+class ArticleDeleteView(DeleteView):
+    template_name = 'articles/article_delete.html'
+
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(Article, id = id_)
+
+    def get_success_url(self):
+        return reverse('blog:article_list')

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<form action="." method='POST'>{% csrf_token %}
+
+    <div style="border-color: #E91E63; border-style: double; width: fit-content;">
+      <h3>{{ object.title }}</h3>
+      <p>{{ object.content }}</p>
+    </div>
+
+  <h3 style="color: #b12424; background: #c0c0c0; width: fit-content;">Are you sure you want to delete the article "{{ object.title}}"</h3>
+  <p><input style="background: #9acd32;" type="submit" value="Yes"> <a href="../">Cancel</a></p>
+</form>
+
+<p style="color: blue">This is just an example of Class Based View</p>
+<p style="color: red">
+  This is a Article delete Form for Articles using ids in the url
+</p>
+
+
+{% endblock %}

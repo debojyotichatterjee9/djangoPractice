@@ -6,8 +6,8 @@
 <!-- {{ object_list }} -->
 
 {% for product in object_list %}
-  <p>{{ product.id }} - <a href="../{{ product.id }}">{{ product.title }}</a> - ${{ product.price }} (Featured: {{ product.featured }})</p>
-  <!-- <p>{{ product.id }} - <a href="{{ product.get_absolute_url }}">{{ product.title }}</a> - ${{ product.price }} (Featured: {{ product.featured }})</p> -->
+  <!-- <p>{{ product.id }} - <a href="../{{ product.id }}">{{ product.title }}</a> - ${{ product.price }} (Featured: {{ product.featured }})</p> -->
+  <p>{{ product.id }} - <a href="{{ product.get_absolute_url }}">{{ product.title }}</a> - ${{ product.price }} (Featured: {{ product.featured }})</p>
 {% endfor %}
 
 {% endblock %}

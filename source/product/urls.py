@@ -19,5 +19,5 @@ urlpatterns = [
     path('update/<int:pid>/', product_update_view, name="product_update"),
     path('<int:pid>/delete/', product_delete_view, name="product_delete"),
     path('productList/', product_list_view, name="product_list"),
-    path('/google_search/', google_search_view, name="google_search")
+    path('google_search/', google_search_view, name="google_search")
 ]

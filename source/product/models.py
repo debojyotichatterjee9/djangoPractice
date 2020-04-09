@@ -10,5 +10,6 @@ class Product(models.Model):
     summary      = models.TextField(blank=False, null=False)
     featured     = models.BooleanField()
 
-def get_absolute_url(self):
-    return reverse("product:product_detail", kwargs={"id": self.id})
+    def get_absolute_url(self):
+        # return reverse("product:product_detail", kwargs={"id": self.id})
+        return f"/product/{self.id}"

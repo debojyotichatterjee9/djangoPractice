@@ -7,6 +7,7 @@ from django.views.generic import (
     DeleteView
 )
 from .models import Article
+from .foorms import ArticleModelForm
 
 class ArticleListView(ListView):
     template_name = 'articles/article_list.html'

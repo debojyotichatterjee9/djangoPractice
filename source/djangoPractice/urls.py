@@ -25,4 +25,5 @@ urlpatterns = [
     path('contact/', views.contact_view, name="contact"),
     path('product/', include('product.urls')),
     path('blog/', include('blog.urls')),
+    path('job/', include('job.urls')),
 ]

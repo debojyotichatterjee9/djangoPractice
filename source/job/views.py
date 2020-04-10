@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from .models import Job
 from .forms import JobModelForm
@@ -50,6 +50,7 @@ class JobCreateView(View):
         form = JobModelForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect("/job") # this will redirect the url after save is successful
         context = {
             "form": form
         }

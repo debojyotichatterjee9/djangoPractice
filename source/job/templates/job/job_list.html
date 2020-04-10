@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Title</th>
+  </tr>
+  {% for job in object_list %}
+  <tr>
+    <td>{{ job.id }}</td>
+  </tr>
+  <tr>
+    <td>{{ job.title }}</td>
+  </tr>
+  {% endfor %}  
+</table>
+
+
+
+{% endblock %}

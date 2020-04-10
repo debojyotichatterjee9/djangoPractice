@@ -18,6 +18,10 @@ class JobView(View):
 def myfbv(request, *args, **kwargs):
     return render(request, 'contact.html', {})
 
+# Create your views here.
+def myfbv(request, *args, **kwargs):
+    return render(request, 'contact.html', {})
+
 
 # =========================== LIST VIEW =========================== #
 class JobListView(View):
@@ -54,4 +58,37 @@ class JobCreateView(View):
         context = {
             "form": form
         }
+        return render(request, self.template_name, context)
+
+
+# =========================== UPDATE VIEW =========================== #
+class JobUpdateView(View):
+    template_name = 'job/job_update.html'
+    def get_object(self):
+        id = self.kwargs.get('id')
+        obj = None
+        if id is not None:
+            obj = get_object_or_404(Job, id=id)
+        return obj
+    #  GET METHOD
+    def get(self, request, id=None, *args, **kwargs):
+        context = {}
+        obj = self.get_object()
+        if obj is not None:
+            form = JobModelForm(instance=obj)
+            context['object'] = obj
+            context['form'] = form
+        return render(request, self.template_name, context)
+
+    # POST METHOD
+    def post(self, request, id=None, *args, **kwargs):
+        context = {}
+        obj = self.get_object()
+        if obj is not None:
+            form = JobModelForm(request.POST, instance=obj)
+            if form.is_valid():
+                form.save()
+                return redirect("/job")
+            context['object'] = obj
+            context['form'] = form
         return render(request, self.template_name, context)

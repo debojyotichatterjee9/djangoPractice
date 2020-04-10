@@ -1,13 +1,32 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import View
+from .models import Job
 
 # BASE VIEW CLASS = VIEW
 
 class JobView(View):
-    template_name = 'job/job_list.html'
+    template_name = 'job/job_detail.html'
     def get(self, request, id=None, *args, **kwargs):
-        return render(request, self.template_name, {})
+        context = {}
+        if id is not None:
+            obj = get_object_or_404(Job, id=id)
+            context['object'] = obj
+        return render(request, self.template_name, context)
 
 # Create your views here.
 def myfbv(request, *args, **kwargs):
     return render(request, 'contact.html', {})
+
+
+class JobListView(View):
+    template_name = 'job/job_list.html'
+    queryset = Job.objects.all()
+
+    def get_query_set(self):
+        return self.queryset
+
+    def get(self, request, *args, **kwargs):
+        context = {
+            'object_list': self.get_query_set()
+            }
+        return render(request, self.template_name, context)

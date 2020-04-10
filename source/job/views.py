@@ -4,14 +4,29 @@ from .models import Job
 from .forms import JobModelForm
 # BASE VIEW CLASS = VIEW
 
+
+
+
+# =========================== JOB OBJECT MIXIN VIEW =========================== #
+class JobObjectMixinView(object):
+    model = Job
+    lookup = 'id'
+    def get_object(self):
+        id = self.kwargs.get('id')
+        obj = None
+        if id is not None:
+            obj = get_object_or_404(self.model, id=id)
+        return obj
+
+
+
+
 # =========================== DETAIL VIEW =========================== #
-class JobView(View):
+class JobView(JobObjectMixinView, View):
     template_name = 'job/job_detail.html'
     def get(self, request, id=None, *args, **kwargs):
-        context = {}
-        if id is not None:
-            obj = get_object_or_404(Job, id=id)
-            context['object'] = obj
+        context = {'object': self.get_object()}
+
         return render(request, self.template_name, context)
 
 # Create your views here.
@@ -54,7 +69,7 @@ class JobCreateView(View):
         form = JobModelForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("/job") # this will redirect the url after save is successful
+            return redirect("/job/") # this will redirect the url after save is successful
         context = {
             "form": form
         }
@@ -62,14 +77,9 @@ class JobCreateView(View):
 
 
 # =========================== UPDATE VIEW =========================== #
-class JobUpdateView(View):
+class JobUpdateView(JobObjectMixinView, View):
     template_name = 'job/job_update.html'
-    def get_object(self):
-        id = self.kwargs.get('id')
-        obj = None
-        if id is not None:
-            obj = get_object_or_404(Job, id=id)
-        return obj
+
     #  GET METHOD
     def get(self, request, id=None, *args, **kwargs):
         context = {}
@@ -88,7 +98,30 @@ class JobUpdateView(View):
             form = JobModelForm(request.POST, instance=obj)
             if form.is_valid():
                 form.save()
-                return redirect("/job")
+                return redirect("/job/")
             context['object'] = obj
             context['form'] = form
+        return render(request, self.template_name, context)
+
+
+# =========================== DELETE VIEW =========================== #
+class JobDeleteView(JobObjectMixinView, View):
+    template_name = 'job/job_delete.html'
+
+    #  GET METHOD
+    def get(self, request, id=None, *args, **kwargs):
+        context = {}
+        obj = self.get_object()
+        if obj is not None:
+            context['object'] = obj
+        return render(request, self.template_name, context)
+
+    # POST METHOD
+    def post(self, request, id=None, *args, **kwargs):
+        context = {}
+        obj = self.get_object()
+        if obj is not None:
+            obj.delete()
+            context['object'] = None
+            return redirect("/job/")
         return render(request, self.template_name, context)

@@ -4,7 +4,7 @@ from .views import (
     JobListView,
     JobCreateView,
     JobUpdateView,
-    # JobDeleteView
+    JobDeleteView,
     myfbv
 )
 
@@ -18,5 +18,5 @@ urlpatterns = [
     path('create/', JobCreateView.as_view(), name='jobs_create'),
     path('<int:id>/', JobView.as_view(), name='jobs_detail'),
     path('<int:id>/update/', JobUpdateView.as_view(), name='jobs_update'),
-    # path('<int:id>/delete/', JobDeleteView.as_view(), name='jobs_delete'),
+    path('<int:id>/delete/', JobDeleteView.as_view(), name='jobs_delete'),
 ]

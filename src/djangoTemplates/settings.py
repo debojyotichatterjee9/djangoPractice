@@ -16,7 +16,7 @@ from pathlib import Path
 # COMMENT: This is basically the path where manage.py resides:
 # COMMENT: C:\Users\debojyotichatterjee\Documents\GitHub\djangoPractice\src
 BASE_DIR = Path(__file__).resolve().parent.parent
-print(BASE_DIR)
+print("Base Directory: ", BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -35,7 +35,7 @@ ALLOWED_HOSTS = ['*']
 
 
 # Application definition
-
+# COMMENT: Here you can put the Third-Party-Apps as well as your own apps. 
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'products'
 ]
 
 MIDDLEWARE = [

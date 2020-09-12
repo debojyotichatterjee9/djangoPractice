@@ -13,19 +13,25 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# COMMENT: This is basically the path where manage.py resides:
+# COMMENT: C:\Users\debojyotichatterjee\Documents\GitHub\djangoPractice\src
 BASE_DIR = Path(__file__).resolve().parent.parent
+print(BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# COMMENT: Every Django project has a secret key associated to it and they are always unique
+# COMMENT: It is advised to keep this private in production which can lead to security leaks.
 SECRET_KEY = 'jx#4g4^$c(#2#r!sb$3w^9%l11a+x1v0l1@dl2-+9u_9r_j_@b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# COMMENT: The domain names that are allowed 
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,7 +82,7 @@ WSGI_APPLICATION = 'djangoTemplates.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3', # COMMENT: If there is no database, django will create one
     }
 }
 

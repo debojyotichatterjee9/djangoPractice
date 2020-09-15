@@ -5,7 +5,8 @@ from django.http import HttpResponse
 
 ''' ==================================== HOME PAGE VIEW ==================================== '''
 def home_page_view(request, *args, **kwargs):
-    return HttpResponse("<h1>Hello World!!</h1>")
+    # return HttpResponse("<h1>Hello World!!</h1>")
+    return render(request, 'home.html', {})
 
 
 ''' ==================================== ABOUT PAGE VIEW ==================================== '''

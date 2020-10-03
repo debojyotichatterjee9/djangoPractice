@@ -24,7 +24,7 @@ svg {
     width: 380px;
     position: absolute;
     top: 50%;
-    a left: 50%;
+    left: 50%;
     margin-top: -100px;
     margin-left: 50px;
     color: #FFF;
@@ -110,6 +110,7 @@ svg {
 }
 </style>
 <body>
+    {% include './navbar.html' %}
     {% block content %} <!--The templates will be injected here by Django-->
      {% endblock %}
 </body>

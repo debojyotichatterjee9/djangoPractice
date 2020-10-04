@@ -12,6 +12,14 @@
 <div class="message-box">
     <h1>About Page</h1>
     <p>This is a sample application for testing purposes</p>
+    <p>{{ random_name }}</p>
+    <p>{{ random_number }}</p>
+    <p>{{ random_list }}</p>
+    <ul>
+        {% for item in random_list %}
+        <li>{{forloop.counter}} - {{item}}</li>
+        {% endfor %}
+    </ul>
     <div class="buttons-con">
         <div class="action-link-wrap">
             <a onclick="history.back(-1)" class="link-button link-back-button">Go Back</a>

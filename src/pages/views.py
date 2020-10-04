@@ -12,7 +12,12 @@ def home_page_view(request, *args, **kwargs):
 ''' ==================================== ABOUT PAGE VIEW ==================================== '''
 def about_page_view(request, *args, **kwargs):
     # return HttpResponse("<h1>About Page</h1>")
-    return render(request, 'about.html', {})
+    context = {
+        "random_name": "Debojyoti Chatterjee",
+        "random_number": "9901",
+        "random_list": ["Fred", "Timothy", "Laura", 19354, 8235, 59321]
+    }
+    return render(request, 'about.html', context)
 
 
 ''' ==================================== CONTACT PAGE VIEW ==================================== '''

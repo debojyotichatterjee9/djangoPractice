@@ -15,31 +15,31 @@
         <tr>
             <td>Name</td>
 
-            <td>{% if title %}{{title}}{% else %}No name updated...{% endif %}</td>
+            <td>{% if product.title and product.title != None and product.title != '' %}{{product.title}}{% else %}No name updated...{% endif %}</td>
         </tr>
 
         <tr>
             <td>Price</td>
 
-            <td>{% if price %}${{price}}{% else %}Price not updated...{% endif %}</td>
+            <td>{% if product.price and product.price != None and product.price != '' %}${{product.price}}{% else %}Price not updated...{% endif %}</td>
         </tr>
-        
+
         <tr>
             <td>Description</td>
 
-            <td>{% if description %}{{description}}{% else %}No description available...{% endif %}</td>
+            <td>{% if product.description and product.description != None and product.description != '' %}{{product.description}}{% else %}No description available...{% endif %}</td>
         </tr>
-        
+
         <tr>
             <td>Summary</td>
 
-            <td>{% if summary %}{{summary}}{% else %}No summary available...{% endif %}</td>
+            <td>{% if product.summary and product.summary != None and product.summary != '' %}{{product.summary}}{% else %}No summary available...{% endif %}</td>
         </tr>
-        
+
         <tr>
             <td>Available</td>
 
-            <td>{% if available %}{{available}}{% else %}Status not updated...{% endif %}</td>
+            <td>{% if product.available and product.available != None and product.available != '' %}{{product.available}}{% else %}Status not updated...{% endif %}</td>
         </tr>
     </tbody>
 

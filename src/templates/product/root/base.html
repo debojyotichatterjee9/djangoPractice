@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Practice Project</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<style type="text/css">
+body {
+    background-color: #68729e;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  border-color: #000000;
+  border-style: double;
+  width: 100%;
+}
+
+th {
+    color: #000000;
+}
+
+td, th {
+  border: 1px double #000000;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+tr:nth-child(odd) {
+  color: #ffffff !important;
+}
+</style>
+<body>
+    {% include './navbar.html' %}
+    {% block content %} <!--The templates will be injected here by Django-->
+     {% endblock %}
+</body>
+</html>

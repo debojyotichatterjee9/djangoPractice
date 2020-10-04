@@ -1,0 +1,53 @@
+{% extends './root/base.html' %} {% block content %}
+
+<h3>Product Details</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Property</th>
+
+            <th colspan="2">Value</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>Name</td>
+
+            <td>{{title}}</td>
+        </tr>
+
+        <tr>
+            <td>Price</td>
+
+            <td>{{price}}</td>
+        </tr>
+        
+        <tr>
+            <td>Description</td>
+
+            <td>{{description}}</td>
+        </tr>
+        
+        <tr>
+            <td>Summary</td>
+
+            <td>{{summary}}</td>
+        </tr>
+        
+        <tr>
+            <td>Available</td>
+
+            <td>{{available}}</td>
+        </tr>
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td>&nbsp;</td>
+
+            <td>For more details visit to: http://anyrandomsite.com</td>
+        </tr>
+    </tfoot>
+</table>{% endblock %}

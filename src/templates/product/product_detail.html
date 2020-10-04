@@ -15,31 +15,31 @@
         <tr>
             <td>Name</td>
 
-            <td>{{title}}</td>
+            <td>{% if title %}{{title}}{% else %}No name updated...{% endif %}</td>
         </tr>
 
         <tr>
             <td>Price</td>
 
-            <td>{{price}}</td>
+            <td>{% if price %}{{price}}{% else %}Price not updated...{% endif %}</td>
         </tr>
         
         <tr>
             <td>Description</td>
 
-            <td>{{description}}</td>
+            <td>{% if description %}{{description}}{% else %}No description available...{% endif %}</td>
         </tr>
         
         <tr>
             <td>Summary</td>
 
-            <td>{{summary}}</td>
+            <td>{% if summary %}{{summary}}{% else %}No summary available...{% endif %}</td>
         </tr>
         
         <tr>
             <td>Available</td>
 
-            <td>{{available}}</td>
+            <td>{% if available %}{{available}}{% else %}Status not updated...{% endif %}</td>
         </tr>
     </tbody>
 

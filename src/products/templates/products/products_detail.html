@@ -1,0 +1,54 @@
+{% extends './root/base.html' %}
+{% block content %}
+
+<h3>Product Details(Overloaded Template)</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Property</th>
+
+            <th colspan="2">Value</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>Name</td>
+
+            <td>{% if product.title and product.title != None and product.title != '' %}{{product.title}}{% else %}No name updated...{% endif %}</td>
+        </tr>
+
+        <tr>
+            <td>Price</td>
+
+            <td>{% if product.price and product.price != None and product.price != '' %}${{product.price}}{% else %}Price not updated...{% endif %}</td>
+        </tr>
+
+        <tr>
+            <td>Description</td>
+
+            <td>{% if product.description and product.description != None and product.description != '' %}{{product.description}}{% else %}No description available...{% endif %}</td>
+        </tr>
+
+        <tr>
+            <td>Summary</td>
+
+            <td>{% if product.summary and product.summary != None and product.summary != '' %}{{product.summary}}{% else %}No summary available...{% endif %}</td>
+        </tr>
+
+        <tr>
+            <td>Available</td>
+
+            <td>{% if product.available and product.available != None and product.available != '' %}{{product.available}}{% else %}Status not updated...{% endif %}</td>
+        </tr>
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td>&nbsp;</td>
+
+            <td>For more details visit to: http://anyrandomsite.com</td>
+        </tr>
+    </tfoot>
+</table>{% endblock %}

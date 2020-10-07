@@ -17,6 +17,8 @@ class RawProductForm(forms.Form):
     title       = forms.CharField(widget=forms.TextInput(
         attrs={
             "placeholder": "Enter the product name...",
+            "class": "form-control",
+            "size": "20"
             }))
     description = forms.CharField(
         required=False,
@@ -24,7 +26,7 @@ class RawProductForm(forms.Form):
             attrs={
                 "id": "product-desc",
                 "placeholder": "Enter the product description...",
-                "class": "style-class-name1 style-class-name2",
+                "class": "form-control",
                 "rows": 9,
                 "columns": 70
                 }))
@@ -34,9 +36,18 @@ class RawProductForm(forms.Form):
             attrs={
                 "id": "product-summary",
                 "placeholder": "Enter the product summary...",
-                "class": "style-class-name1 style-class-name2",
+                "class": "form-control",
                 "rows": 9,
                 "columns": 70
                 }))
-    price       = forms.DecimalField(initial=199.99)
-    available   = forms.BooleanField(initial=True)
+    price       = forms.DecimalField(initial=199.99, widget=forms.TextInput(
+            attrs={
+                "placeholder": "Enter the product price...",
+                "type": "number",
+                "class": "form-control",
+                "size": "20"
+                }))
+    available   = forms.BooleanField(initial=True, widget=forms.CheckboxInput(
+            attrs={
+                "class": ""
+                }))

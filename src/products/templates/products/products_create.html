@@ -1,8 +1,9 @@
 {% extends './root/base.html' %} {% block content %}
 
-<h3>Product Create</h3>
+<div class="container-sm">
+<h1 class="display-4">Product Create</h1>
 
-<form action='' method='post'>
+<form class="form-group" action='' method='post'>
     <!--  DJANGO TEMPLATE STUFF  -->
     <!--
         This will put the csrf token and render all the fields mentioned in forms.py
@@ -41,5 +42,6 @@
     <!--  PURE DJANGO FORM BUILDING  -->
     {{ form.as_p }}
     <!--  PURE DJANGO FORM BUILDING  -->
-    <input type='submit' value='Save'>
+    <input class="btn btn-primary" type='submit' value='Save Product'>
 </form>{% endblock %}
+</div>

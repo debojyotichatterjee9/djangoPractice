@@ -51,3 +51,10 @@ class RawProductForm(forms.Form):
             attrs={
                 "class": ""
                 }))
+    
+    def clean_title(self, *args, **kwargs):
+        title = self.cleaned_data.get("title")
+        if not title.startswith("PRD-"):
+            raise forms.ValidationError("Invalid product name!")
+        return title
+            

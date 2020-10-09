@@ -60,7 +60,11 @@ def product_detail_view(request):
 
 # ~~~~~~~~~~ FOR PURE DJANGO FORM METHOD ~~~~~~~~~~
 def product_create_view(request):
-    form = RawProductForm()
+    # setting initial data for the form
+    initial_data = {
+        "price": 299.99
+    }
+    form = RawProductForm(initial=initial_data)
     if request.method == 'POST':
         form = RawProductForm(request.POST)
         if form.is_valid():

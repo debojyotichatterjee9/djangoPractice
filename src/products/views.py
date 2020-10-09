@@ -1,12 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+from django.http import Http404
 from .models import Product
 from .forms import ProductForm, RawProductForm
 # Create your views here.
 
 
 ''' ==================================== PRODUCT DETAIL VIEW ==================================== '''
-def product_detail_view(request):
-    obj = Product.objects.get(id=1)
+def product_detail_view(request, product_id):
+    # this is a simpler way of getting the default Django 404 page
+    # obj = get_object_or_404(Product, id=int(product_id))
+    # we can also use the try catch method and raise Http404 error which does the same
+    try:
+        obj = Product.objects.get(id=int(product_id))
+    except:
+        raise Http404
     # context = {
     #     "title": obj.title,
     #     "description": obj.description,
@@ -77,3 +84,17 @@ def product_create_view(request):
         'form': form
     }
     return render(request, "products/products_create.html", context)
+
+
+''' ==================================== PRODUCT DELETE VIEW ==================================== '''
+def product_delete_view(request, product_id):
+    queryset = Product.objects.filter(available=True)
+    obj = get_object_or_404(queryset, id=int(product_id))
+    if(request.method == 'POST'):
+        obj.available = False # doing a soft delete and saving the updating the data
+        obj.save()
+        return redirect('../list')
+    context = {
+        "product": obj
+    }
+    return render(request, "products/products_delete.html", context)

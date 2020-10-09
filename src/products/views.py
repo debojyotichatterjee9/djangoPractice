@@ -88,13 +88,22 @@ def product_create_view(request):
 
 ''' ==================================== PRODUCT DELETE VIEW ==================================== '''
 def product_delete_view(request, product_id):
-    queryset = Product.objects.filter(available=True)
+    queryset = Product.objects.filter(available=True) # filtering the items with available=True
     obj = get_object_or_404(queryset, id=int(product_id))
     if(request.method == 'POST'):
-        obj.available = False # doing a soft delete and saving the updating the data
+        obj.available = False # doing a soft delete and saving the updated the data
         obj.save()
         return redirect('../list')
     context = {
         "product": obj
     }
     return render(request, "products/products_delete.html", context)
+
+
+''' ==================================== PRODUCT LIST VIEW ==================================== '''
+def product_list_view(request):
+    queryset = Product.objects.all()
+    context = {
+        "product_list": queryset
+    }
+    return render(request, "products/products_list.html", context)

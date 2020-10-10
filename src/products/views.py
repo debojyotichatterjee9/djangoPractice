@@ -11,7 +11,7 @@ def product_detail_view(request, product_id):
     # obj = get_object_or_404(Product, id=int(product_id))
     # we can also use the try catch method and raise Http404 error which does the same
     try:
-        obj = Product.objects.get(id=int(product_id))
+        obj = Product.objects.get(pk=product_id)
     except:
         raise Http404
     # context = {
@@ -89,7 +89,7 @@ def product_create_view(request):
 ''' ==================================== PRODUCT DELETE VIEW ==================================== '''
 def product_delete_view(request, product_id):
     queryset = Product.objects.filter(available=True) # filtering the items with available=True
-    obj = get_object_or_404(queryset, id=int(product_id))
+    obj = get_object_or_404(queryset, pk=product_id)
     if(request.method == 'POST'):
         obj.available = False # doing a soft delete and saving the updated the data
         obj.save()

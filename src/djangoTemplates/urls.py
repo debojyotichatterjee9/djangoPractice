@@ -23,8 +23,8 @@ urlpatterns = [
     path('', home_page_view, name='home'),
     path('about/', about_page_view, name='about'),
     path('contact/', contact_page_view, name='contact'),
-    path('product/details/<int:product_id>', product_detail_view, name='details'),
+    path('product/details/<product_id>', product_detail_view, name='details'),
     path('product/create', product_create_view, name='create'),
-    path('product/delete/<int:product_id>', product_delete_view, name='delete'),
+    path('product/delete/<product_id>', product_delete_view, name='delete'),
     path('product/list', product_list_view, name='list'),
 ]

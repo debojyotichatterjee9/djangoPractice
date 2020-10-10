@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'djangoTemplates.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3', # COMMENT: If there is no database, django will create one
+        'NAME': BASE_DIR / 'productdb.sqlite3', # COMMENT: If there is no database, django will create one
     }
 }
 

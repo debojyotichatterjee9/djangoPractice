@@ -13,6 +13,8 @@
                 <th scope="col">Price</th>
 
                 <th scope="col">Availablity</th>
+                
+                <th scope="col">Actions</th>
             </tr>
         </thead>
 
@@ -26,6 +28,11 @@
                 <td scope="row">{% if product.price and product.price != None and product.price != '' %}${{product.price}}{% else %}0.00{% endif %}</td>
 
                 <td scope="row">{% if product.available and product.available != None and product.available != '' and product.available == True %}Available{% else %}Not Available{% endif %}</td>
+                
+                <td scope="row" class="d-flex justify-content-center">
+                    <a href=`#` class="badge badge-warning mr-1">Details</a>
+                    <a href="#" class="badge badge-danger ml-1">Delete</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

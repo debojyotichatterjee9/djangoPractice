@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 import uuid
 # Create your models here.
 # COMMENT: Inherit this from the default Django class of model 
@@ -11,4 +12,5 @@ class Product(models.Model):
     available   = models.BooleanField(default = True)
     
     def get_absolute_url(self):
-        return f"/product/details/{self.id}"
+        print(str(self.id))
+        return reverse("details", kwargs={"product_id": str(self.id)})

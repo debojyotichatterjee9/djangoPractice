@@ -9,7 +9,7 @@ class User(models.Model):
     password    = models.CharField(max_length=120)
     contact     = models.CharField(max_length=13)
     address     = models.TextField(blank = True, null = True)
-    enabled     = models.BooleanField(default = True)
+    enabled     = models.BooleanField(default = False)
     deleted     = models.BooleanField(default = False)
     
     def get_absolute_url(self):

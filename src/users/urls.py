@@ -1,12 +1,18 @@
 from django.urls import path
-from .views import user_detail_view
+# we are using class based view so these are not reqd
+# from .views import user_list_view, user_detail_view
 from .views import (
-    UserListView
+    UserCreateView,
+    UserListView,
+    UserDetailView,
+    UserUpdateView
 )
 
 app_name="users"
 urlpatterns = [
     # path('list', user_list_view, name='list'),
+    path('create', UserCreateView.as_view(), name='create'),
     path('list', UserListView.as_view(), name='list'),
-    path('details/<str:user_id>', user_detail_view, name='details'),
+    path('details/<str:user_id>', UserDetailView.as_view(), name='details'), #class based view searches with the keyword pk but we are overriding it
+    path('update/<str:user_id>', UserUpdateView.as_view(), name='update'),
     ]

@@ -1,0 +1,14 @@
+{% extends './root/base.html' %} {% block content %}
+
+<div class="container-sm">
+<h3 class="display-4">User Create</h3>
+
+<form class="form-group" action='' method='post'>
+    <!--  DJANGO TEMPLATE STUFF  -->
+    {% csrf_token %}
+    <!--  PURE DJANGO FORM BUILDING  -->
+    {{ form.as_p }}
+    <!--  PURE DJANGO FORM BUILDING  -->
+    <input class="btn btn-primary" type='submit' value='Create User'>
+</form>{% endblock %}
+</div>

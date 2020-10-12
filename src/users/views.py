@@ -22,7 +22,7 @@ class UserCreateView(CreateView):
     
     # this method can override the get_absolute_url function and lets you define a path after success
     def get_success_url(self):
-        return "/"
+        return "/user/list"
     
     
     

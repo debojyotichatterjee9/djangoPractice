@@ -78,6 +78,7 @@ def product_create_view(request):
             print(form.cleaned_data)
             Product.objects.create(**form.cleaned_data)
             form = RawProductForm()
+            return redirect('./list')
         else:
             print(form.errors)
     context = {
@@ -107,3 +108,34 @@ def product_list_view(request):
         "product_list": queryset
     }
     return render(request, "products/products_list.html", context)
+
+
+''' ==================================== PRODUCT UPDATE VIEW ==================================== '''
+def product_update_view(request, product_id):
+    obj = get_object_or_404(Product, id=product_id)
+    product_values = {
+        "title": obj.title,
+        "description": obj.description,
+        "summary": obj.summary,
+        "price": obj.price,
+        "available": obj.available
+    }
+    form = RawProductForm(initial=product_values)
+    if request.method == 'POST':
+        form = RawProductForm(request.POST)
+        if form.is_valid():
+            updated_data = form.cleaned_data
+            # TODO: implement some loop into this functionality
+            obj.title = updated_data["title"]
+            obj.description = updated_data["description"]
+            obj.summary = updated_data["summary"]
+            obj.price = updated_data["price"]
+            obj.available = updated_data["available"]
+            obj.save()
+            return redirect('../list')
+        else:
+            print(form.errors)
+    context = {
+        'form': form
+    }
+    return render(request, "products/products_update.html", context)

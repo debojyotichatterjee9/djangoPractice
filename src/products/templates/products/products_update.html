@@ -1,0 +1,47 @@
+{% extends './root/base.html' %} {% block content %}
+
+<div class="container-sm">
+<h3 class="display-4">Product Update</h3>
+
+<form class="form-group" action='' method='post'>
+    <!--  DJANGO TEMPLATE STUFF  -->
+    <!--
+        This will put the csrf token and render all the fields mentioned in forms.py
+        in a <p></p> tag-->
+    {% csrf_token %} <!--{{ form.as_p }}-->
+     <!--  DJANGO TEMPLATE STUFF  -->
+     
+     
+     <!--  STANDARD HTML FORM BUILDING  -->
+
+<!--    <div>-->
+<!--        <p>Name: </p><input type='text' name='title' size='25' placeholder='Enter the product name...'>-->
+<!--    </div>-->
+<!---->
+<!--    <div>-->
+<!--        <p>Description: </p><textarea name='description' rows="9" cols="70">-->
+<!--Enter the product description...-->
+<!--</textarea>-->
+<!--    </div>-->
+<!---->
+<!--    <div>-->
+<!--        <p>Summary: </p><textarea name='summary' rows="9" cols="70">-->
+<!--Enter the product summary...-->
+<!--</textarea>-->
+<!--    </div>-->
+<!---->
+<!--    <div>-->
+<!--        <p>Price: </p><input type='number' name='price' size='5' placeholder='Price...'>-->
+<!--    </div>-->
+<!---->
+<!--    <div>-->
+<!--        <p>Available: <input type='checkbox' name='available' value='True' checked='yes'></p>-->
+<!--    </div>-->
+    <!--  STANDARD HTML FORM BUILDING  -->
+    
+    <!--  PURE DJANGO FORM BUILDING  -->
+    {{ form.as_p }}
+    <!--  PURE DJANGO FORM BUILDING  -->
+    <input class="btn btn-primary" type='submit' value='Update Product'>
+</form>{% endblock %}
+</div>

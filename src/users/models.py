@@ -10,4 +10,7 @@ class User(models.Model):
     contact     = models.CharField(max_length=13)
     address     = models.TextField(blank = True, null = True)
     enabled     = models.BooleanField(default = True)
-    deleted     = models.BooleanField(default = True)
+    deleted     = models.BooleanField(default = False)
+    
+    def get_absolute_url(self):
+        return reverse("users:details", kwargs={"user_id": str(self.id)})

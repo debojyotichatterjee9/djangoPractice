@@ -24,4 +24,5 @@ urlpatterns = [
     path('contact/', contact_page_view, name='contact'),
     
     path('product/', include('products.urls')),
+    path('user/', include('users.urls')),
 ]

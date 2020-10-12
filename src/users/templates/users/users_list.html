@@ -1,0 +1,55 @@
+{% extends './root/base.html %} {% block content %}
+
+<div class="container-sm">
+    <h3 class="display-4">User List</h3>
+
+    <table class="table table-sm table-striped table-bordered table-dark table-hover">
+        <thead class="bg-danger text-center">
+            <tr>
+                <th scope="col">S.No</th>
+                
+                <th scope="col">First Name</th>
+                
+                <th scope="col">Last Name</th>
+
+                <th scope="col">Email</th>
+
+                <th scope="col">Profile</th>
+                
+                <th scope="col">Status</th>
+                
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+          {% for user in user_list %}
+            <tr>
+                <td scope="row">{{ forloop.counter }}</td>
+                
+                <td scope="row">{% if user.fname and user.fname != None and user.fname != '' %}{{user.fname}}{% else %}No name{% endif %}</td>
+                
+                <td scope="row">{% if user.lname and user.lname != None and user.lname != '' %}{{user.lname}}{% else %}-{% endif %}</td>
+
+                <td scope="row">{% if user.email and user.email != None and user.email != '' %}{{user.email}}{% else %}Not Available{% endif %}</td>
+
+                <td scope="row">{% if user.enabled and user.enabled != None and user.enabled != '' and user.enabled == True %}Enabled{% else %}Disabled{% endif %}</td>
+                
+                <td scope="row">{% if user.deleted and user.deleted != None and user.deleted != '' and user.deleted == True %}Deleted{% else %}Active{% endif %}</td>
+                
+                <td scope="row" class="d-flex justify-content-center">
+                    <a href="{{ user.get_absolute_url }}" class="badge badge-success mr-1">Details</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td>&nbsp;</td>
+
+                <td scope="row"><i><small>**For more details visit to: http://anyrandomsite.com</small></i></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>{% endblock %}

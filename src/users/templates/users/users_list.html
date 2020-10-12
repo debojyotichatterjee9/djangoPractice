@@ -8,10 +8,8 @@
             <tr>
                 <th scope="col">S.No</th>
                 
-                <th scope="col">First Name</th>
+                <th scope="col">Name</th>
                 
-                <th scope="col">Last Name</th>
-
                 <th scope="col">Email</th>
 
                 <th scope="col">Profile</th>
@@ -27,10 +25,8 @@
             <tr>
                 <td scope="row">{{ forloop.counter }}</td>
                 
-                <td scope="row">{% if user.fname and user.fname != None and user.fname != '' %}{{user.fname}}{% else %}No name{% endif %}</td>
+                <td scope="row">{% if user.fname and user.fname != None and user.fname != '' %}{{user.fname}}{% if user.lname and user.lname != None and user.lname != '' %} {{user.lname}}{% else %} {% endif %}{% else %}No name{% endif %}</td>
                 
-                <td scope="row">{% if user.lname and user.lname != None and user.lname != '' %}{{user.lname}}{% else %}-{% endif %}</td>
-
                 <td scope="row">{% if user.email and user.email != None and user.email != '' %}{{user.email}}{% else %}Not Available{% endif %}</td>
 
                 <td scope="row">{% if user.enabled and user.enabled != None and user.enabled != '' and user.enabled == True %}Enabled{% else %}Disabled{% endif %}</td>

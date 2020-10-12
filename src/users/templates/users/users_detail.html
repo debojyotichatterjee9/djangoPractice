@@ -2,46 +2,64 @@
 {% block content %}
 
 <div class="container-sm">
-<h3 class="display-4">Product Details(Overloaded Template)</h3>
+<h3 class="display-4">User Details</h3>
 
 <table class="table table-striped table-bordered table-dark table-hover">
     <thead class="bg-danger text-center">
         <tr>
             <th scope="col">Property</th>
 
-            <th scope="col" colspan="2">Value</th>
+            <th scope="col">Value</th>
         </tr>
     </thead>
 
     <tbody>
         <tr>
-            <td scope="row">Name</td>
+            <td scope="row">First Name</td>
 
-            <td scope="row">{% if product.title and product.title != None and product.title != '' %}{{product.title}}{% else %}No name updated...{% endif %}</td>
+            <td scope="row">{% if user.fname and user.fname != None and user.fname != '' %}{{user.fname}}{% else %}No name updated...{% endif %}</td>
         </tr>
 
         <tr>
-            <td scope="row">Price</td>
+            <td scope="row">Last Name</td>
 
-            <td scope="row">{% if product.price and product.price != None and product.price != '' %}${{product.price}}{% else %}Price not updated...{% endif %}</td>
+            <td scope="row">{% if user.lname and user.lname != None and user.lname != '' %}{{user.lname}}{% else %}No name updated...{% endif %}</td>
         </tr>
 
         <tr>
-            <td scope="row">Description</td>
+            <td scope="row">Email</td>
 
-            <td scope="row">{% if product.description and product.description != None and product.description != '' %}{{product.description}}{% else %}No description available...{% endif %}</td>
+            <td scope="row">{% if user.email and user.email != None and user.email != '' %}{{user.email}}{% else %}Email address not available...{% endif %}</td>
         </tr>
 
         <tr>
-            <td scope="row">Summary</td>
+            <td scope="row">Password</td>
 
-            <td scope="row">{% if product.summary and product.summary != None and product.summary != '' %}{{product.summary}}{% else %}No summary available...{% endif %}</td>
+            <td scope="row" type="password">{% if user.password and user.password != None and user.password != '' %}*********<i> (Updated)</i>{% else %}Password not updated...{% endif %}</td>
         </tr>
-
+        
         <tr>
-            <td scope="row">Available</td>
+            <td scope="row">Contact</td>
 
-            <td scope="row">{% if product.available and product.available != None and product.available != '' %}{{product.available}}{% else %}Status not updated...{% endif %}</td>
+            <td scope="row">{% if user.contact and user.contact != None and user.contact != '' %}{{user.contact}}{% else %}No contact number available...{% endif %}</td>
+        </tr>
+        
+        <tr>
+            <td scope="row">Address</td>
+
+            <td scope="row">{% if user.address and user.address != None and user.address != '' %}{{user.address}}{% else %}Address not updated...{% endif %}</td>
+        </tr>
+        
+        <tr>
+            <td scope="row">Profile</td>
+
+            <td scope="row">{% if user.enabled and user.enabled != None and user.enabled != '' %}{% if user.enabled == True %}Enabled{% else %}Disabled{% endif %}{% else %}Unavailable...{% endif %}</td>
+        </tr>
+        
+        <tr>
+            <td scope="row">Status</td>
+
+            <td scope="row">{% if user.deleted != None and user.deleted != '' %}{% if  user.deleted == True %}Deleted{% else %}Active{% endif %}{% else %}Unavailable...{% endif %}</td>
         </tr>
     </tbody>
 

@@ -30,7 +30,8 @@
                 <td scope="row">{% if product.available and product.available != None and product.available != '' and product.available == True %}Available{% else %}Not Available{% endif %}</td>
                 
                 <td scope="row" class="d-flex justify-content-center">
-                    <a href="{{ product.get_absolute_url }}" class="badge badge-warning mr-1">Details</a>
+                    <a href="{{ product.get_absolute_url }}" class="badge badge-success mr-1">Details</a>
+                    <a href="{{ product.get_absolute_url }}" class="badge badge-warning mr-1 ml-1">Update</a>
                     <a href="{% url 'delete' product.id %}" class="badge badge-danger ml-1">Delete</a>
                 </td>
             </tr>

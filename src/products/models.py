@@ -12,5 +12,5 @@ class Product(models.Model):
     available   = models.BooleanField(default = True)
     
     def get_absolute_url(self):
-        print(str(self.id))
+        print(self.id)
         return reverse("details", kwargs={"product_id": str(self.id)})

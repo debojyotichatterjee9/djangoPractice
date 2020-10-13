@@ -1,0 +1,20 @@
+{% extends './root/base.html %}
+
+{% block content %}
+<div class="container-sm">
+<form method='POST'>{% csrf_token %}
+  <div class="form-group">
+    <h3 class="display-4">Are you sure you want to delete?</h3>
+    <div class="card text-white bg-dark w-75 mb-3">
+  <div class="card-body">
+    <h5 class="card-title text-warning">{% if user.fname and user.fname != None and user.fname != '' %}{{user.fname}}{% if user.lname and user.lname != None and user.lname != '' %} {{user.lname}}{% else %} {% endif %}{% else %}No name{% endif %}</h5>
+    <p class="card-text"><i class="text-secondary">Email:</i> {% if user.email and user.email != None and user.email != '' %}{{user.email}}{% else %}No Email{% endif %}</p>
+  </div>
+</div>
+    <small class="form-text text-muted"><i>**This action cannot be reversed.</i></small>
+  
+  <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+</div>
+  </div>
+{% endblock %}

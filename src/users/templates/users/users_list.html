@@ -35,8 +35,8 @@
                 
                 <td scope="row" class="d-flex justify-content-center">
                     <a href="{{ user.get_absolute_url }}" class="badge badge-success mr-1">Details</a>
-                    
                     <a href="{% url 'users:update' user.id %}" class="badge badge-warning mr-1">Update</a>
+                    <a href="{% url 'users:delete' user.id %}" class="badge badge-danger mr-1">Delete</a>
                 </td>
             </tr>
             {% endfor %}

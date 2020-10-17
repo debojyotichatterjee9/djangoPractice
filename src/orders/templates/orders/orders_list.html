@@ -1,0 +1,49 @@
+{% extends './root/base.html %} {% block content %}
+
+<div class="container-sm">
+    <h3 class="display-4">Product List</h3>
+
+    <table class="table table-sm table-striped table-bordered table-dark table-hover">
+        <thead class="bg-danger text-center">
+            <tr>
+                <th scope="col">S.No</th>
+                
+                <th scope="col">Order Code</th>
+
+                <th scope="col">Discount</th>
+
+                <th scope="col">Total Amount</th>
+                
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+          {% for order in orders_list %}
+            <tr>
+                <td scope="row">{{ forloop.counter }}</td>
+                
+                <td scope="row">{% if order.order_code and order.order_code != None and order.order_code != '' %}{{order.order_code}}{% else %}Not Defined{% endif %}</td>
+
+                <td scope="row">{% if order.discount_amount and order.discount_amount != None and order.discount_amount != '' %}${{order.discount_amount}}{% else %}$0.00{% endif %}</td>
+
+                <td scope="row">{% if order.total_amount and order.total_amount != None and order.total_amount != '' %}${{order.total_amount}}{% else %}Not Available{% endif %}</td>
+                
+                <td scope="row" class="d-flex justify-content-center">
+                    <a href="#" class="badge badge-success mr-1">Details</a>
+                    <a href="#" class="badge badge-warning mr-1 ml-1">Update</a>
+                    <a href="#" class="badge badge-danger ml-1">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td>&nbsp;</td>
+
+                <td scope="row"><i><small>**For more details visit to: http://anyrandomsite.com</small></i></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>{% endblock %}

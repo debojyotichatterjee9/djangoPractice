@@ -35,36 +35,38 @@ class OrderObjectMixin(object):
 #         return render(request, self.template_name, context)
 # 
 # 
-# class OrderUpdateView(OrderObjectMixin, View):
-#     template_name = "orders/orders_update.html" # DetailView
-#     def get_object(self):
-#         id = self.kwargs.get('id')
-#         obj = None
-#         if id is not None:
-#             obj = get_object_or_404(Order, id=id)
-#         return obj
-# 
-#     def get(self, request, id=None, *args, **kwargs):
-#         # GET method
-#         context = {}
-#         obj = self.get_object()
-#         if obj is not None:
-#             form = OrderModelForm(instance=obj)
-#             context['object'] = obj
-#             context['form'] = form
-#         return render(request, self.template_name, context)
-# 
-#     def post(self, request, id=None,  *args, **kwargs):
-#         # POST method
-#         context = {}
-#         obj = self.get_object()
-#         if obj is not None:
-#             form = OrderModelForm(request.POST, instance=obj)
-#             if form.is_valid():
-#                 form.save()
-#             context['object'] = obj
-#             context['form'] = form
-#         return render(request, self.template_name, context)
+class OrderUpdateView(OrderObjectMixin, View):
+    template_name = "orders/orders_update.html" # DetailView
+    def get_object(self):
+        id = self.kwargs.get('order_id')
+        obj = None
+        if id is not None:
+            obj = get_object_or_404(Order, id=id)
+        return obj
+
+    def get(self, request, id=None, *args, **kwargs):
+        # GET method
+        context = {}
+        obj = self.get_object()
+        if obj is not None:
+            form = OrderModelForm(instance=obj)
+            context['order'] = obj
+            context['form'] = form
+        return render(request, self.template_name, context)
+
+    def post(self, request, id=None,  *args, **kwargs):
+        # POST method
+        context = {}
+        obj = self.get_object()
+        if obj is not None:
+            form = OrderModelForm(request.POST, instance=obj)
+            if form.is_valid():
+                form.save()
+            else:
+                print("Form error")
+            context['order'] = obj
+            context['form'] = form
+        return render(request, self.template_name, context)
 # 
 # 
 # class OrderCreateView(View):

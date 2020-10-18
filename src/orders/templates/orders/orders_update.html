@@ -1,7 +1,7 @@
 {% extends './root/base.html' %} {% block content %}
 
 <div class="container-sm">
-<h3 class="display-4">Product Update</h3>
+<h3 class="display-4">Order Update ({{order.order_code}})</h3>
 
 <form class="form-group" action='' method='post'>
     <!--  DJANGO TEMPLATE STUFF  -->
@@ -42,6 +42,6 @@
     <!--  PURE DJANGO FORM BUILDING  -->
     {{ form.as_p }}
     <!--  PURE DJANGO FORM BUILDING  -->
-    <input class="btn btn-primary" type='submit' value='Update Product'>
+    <input class="btn btn-primary" type='submit' value='Update Order'>
 </form>{% endblock %}
 </div>

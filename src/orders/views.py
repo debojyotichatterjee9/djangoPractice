@@ -85,6 +85,28 @@ class OrderObjectMixin(object):
 #         return render(request, self.template_name, context)
 # 
 # 
+class OrderDetailView(View):
+    template_name = "orders/orders_detail.html"
+    queryset = Order.objects.all()
+
+    def get_object(self):
+        id = self.kwargs.get('order_id')
+        obj = None
+        if id is not None:
+            obj = get_object_or_404(Order, id=id)
+        return obj
+
+    def get(self, request, id=None, *args, **kwargs):
+      # GET method
+        context = {}
+        obj = self.get_object()
+        if obj is not None:
+            form = OrderModelForm(instance=obj)
+            context['order'] = obj
+            context['form'] = form
+        return render(request, self.template_name, context)
+    
+    
 class OrderListView(View):
     template_name = "orders/orders_list.html"
     queryset = Order.objects.all()
@@ -101,5 +123,6 @@ class OrderView(OrderObjectMixin, View):
     template_name = "orders/orders_detail.html" # DetailView
     def get(self, request, id=None, *args, **kwargs):
         # GET method
-        context = {'object': self.get_object()}
+        context = {'order': self.get_object()}
+        print(context)
         return render(request, self.template_name, context)

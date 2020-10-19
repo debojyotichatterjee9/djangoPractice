@@ -16,6 +16,6 @@ class OrderModelForm(forms.ModelForm):
     
     def clean_order_code(self):
         order_code = self.cleaned_data.get('order_code')
-        if order_code.startswith('ORD-'):
+        if not order_code.startswith('ORD-'):
             raise forms.ValidationError("Invalid Order Id")
         return order_code

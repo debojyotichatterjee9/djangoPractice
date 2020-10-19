@@ -69,22 +69,22 @@ class OrderUpdateView(OrderObjectMixin, View):
         return render(request, self.template_name, context)
 # 
 # 
-# class OrderCreateView(View):
-#     template_name = "orders/orders_create.html" # DetailView
-#     def get(self, request, *args, **kwargs):
-#         # GET method
-#         form = OrderModelForm()
-#         context = {"form": form}
-#         return render(request, self.template_name, context)
-# 
-#     def post(self, request, *args, **kwargs):
-#         # POST method
-#         form = OrderModelForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             form = OrderModelForm()
-#         context = {"form": form}
-#         return render(request, self.template_name, context)
+class OrderCreateView(View):
+    template_name = "orders/orders_create.html" # DetailView
+    def get(self, request, *args, **kwargs):
+        # GET method
+        form = OrderModelForm()
+        context = {"form": form}
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        # POST method
+        form = OrderModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form = OrderModelForm()
+        context = {"form": form}
+        return render(request, self.template_name, context)
 # 
 # 
 class OrderDetailView(View):

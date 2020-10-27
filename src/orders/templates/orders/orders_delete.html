@@ -1,0 +1,21 @@
+{% extends './root/base.html %}
+
+{% block content %}
+<div class="container-sm">
+<form method='POST'>{% csrf_token %}
+  <div class="form-group">
+    <h3 class="display-4">Are you sure you want to delete?</h3>
+    <div class="card text-white bg-dark w-75 mb-3">
+  <div class="card-body">
+    <h5 class="card-title text-warning">{% if order.order_code and order.order_code != None and order.order_code != '' %}{{order.order_code}}{% else %}Unnamed Order{% endif %}</h5>
+    <p class="card-text">Discount: {% if order.discount_amount and order.discount_amount != None and order.discount_amount != '' %}{{order.discount_amount}}{% else %}Not on Discount.{% endif %}</p>
+    <p class="card-text text-success"> Payable Amount: {% if order.total_amount and order.total_amount != None and order.total_amount != '' %}{{order.total_amount}}{% else %}Price not available.{% endif %}</p>
+  </div>
+</div>
+    <small class="form-text text-muted"><i>**This action cannot be reversed.</i></small>
+  
+  <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+</div>
+  </div>
+{% endblock %}
